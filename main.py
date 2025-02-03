@@ -5,7 +5,6 @@
 # external imports
 import os
 import dotenv
-import json
 import csv
 from typing import Dict, List
 from enum import Enum
