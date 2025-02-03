@@ -129,7 +129,8 @@ for starting_nb in range(0, AUTH_NB_LIMIT, AUTH_NB_RES_PER_PAGE):
         continue
     # Pymarc is not reading records because of the new lines
     # So decode the string, remove them, then reencode the string
-    AUTH_INDEX.add_auth_list_to_index(raw_authority_list.decode().replace("\n", "").encode(), page)#Replace end of record\n by end of record
+    # Make sure to only remove \n at the end of record, otherwise record length won't match
+    AUTH_INDEX.add_auth_list_to_index(raw_authority_list.decode().replace("\x1e\x1d\n", "\x1e\x1d").encode(), page)
 print(len(list(AUTH_INDEX.index.keys())))
 
 ERRORS_FILE.close()
