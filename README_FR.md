@@ -35,13 +35,13 @@ Ce fichier contient toutes les erreurs qui ne sont pas des liens absents.
   * `NO_RECORD` : une erreur a eu lieu lors de la lecture de la notice MARC
   * `NO_AUTH_ID_IN_RECORD` : aucune `001` n'a été trouvée dans la notice d'autorité
   * `NO_AUTH_WITH_THIS_ID` : une autorité possède un lien vers cet ID d'autorité, mais cette autorité n'a pas été récupérée de Koha
-* `id` : dans le case d'une erreur `NO_AUTH_WITH_THIS_ID`, l'ID de l'autorité qui n'a pas été trouvée
+* `id` : dans le cas d'une erreur `NO_AUTH_WITH_THIS_ID`, l'ID de l'autorité qui n'a pas été trouvée
 * `index` : sauf pour `NO_AUTH_WITH_THIS_ID`, le numéro de page avec l'index de la notice qui a déclenché l'erreur (si pertinent)
 * `message` : détails de l'erreur (en anglais)
 
 ### Contenu du fichier de sortie des liens absents
 
-Ce fichier contient unqiuement les erreurs de liens absents.
+Ce fichier contient uniquement les erreurs de liens absents.
 6 colonnes :
 
 * `original_id` : ID de l'autorité faisant un lien vers une autre qui ne renvoie pas vers elle en retour
