@@ -20,6 +20,7 @@ AUTH_TYPE=os.getenv("AUTH_TYPE")
 AUTH_NB_LIMIT = validate_int(os.getenv("AUTH_NB_LIMIT"), 3000)
 AUTH_NB_RES_PER_PAGE = validate_int(os.getenv("AUTH_NB_RES_PER_PAGE"), 50)
 AUTH_NAME_FIELD_TAG = validate_int(os.getenv("AUTH_NAME_FIELD_TAG"), 200)
+AUTH_RELATION_FIELD_TAG = validate_int(os.getenv("AUTH_RELATION_FIELD_TAG"), 500)
 
 # ----------------- Enum definition -----------------
 class Error_Types(Enum):
@@ -75,7 +76,7 @@ class Authority(object):
     
     def define_relations(self, record:pymarc.record.Record):
         """Gets all relationships IDs"""
-        for field in record.get_fields("550"):
+        for field in record.get_fields(str(AUTH_RELATION_FIELD_TAG)):
             # Get the auth ID
             auth_id = validate_int(field.get("9"))
             # get relationship
@@ -170,6 +171,7 @@ for starting_nb in range(0, AUTH_NB_LIMIT, AUTH_NB_RES_PER_PAGE):
     # So decode the string, remove them, then reencode the string
     # Make sure to only remove \n at the end of record, otherwise record length won't match
     AUTH_INDEX.add_auth_list_to_index(raw_authority_list.decode().replace("\x1e\x1d\n", "\x1e\x1d").encode(), page)
+    print(f"Page {page} : OK")
 
 # Iterate through all authorities to check reciprocity in links
 for auth_id in AUTH_INDEX.index:

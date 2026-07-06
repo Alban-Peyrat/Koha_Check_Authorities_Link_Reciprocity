@@ -18,6 +18,7 @@ _Créé pour le thésaurus ArchiRès, créé pour Koha 23.11_
 * `AUTH_NB_RES_PER_PAGE` : nombre d'autorités récupérées par page
 * `AUTH_TYPE` : code du type d'autorité
 * `AUTH_NAME_FIELD_TAG` : zone UNIMARC contenant le nom pour ce type d'autorité (pour les _datafields_, récupère le premier sous-champ au code `a`)
+* `AUTH_RELATION_FIELD_TAG` : zone UNIMARC contenant la relation pour ce type d'autorité (pour les _datafields_, récupère le premier sous-champ au code `5`)
 * `ERRORS_FILE` : chemin complet pour le fichier de sortie d'erreurs
 * `MISSING_LINKS_FILE` : chemin complet pour le fichier de sortie des liens absents
 
@@ -36,6 +37,7 @@ Ce fichier contient toutes les erreurs qui ne sont pas des liens absents.
   * `NO_AUTH_ID_IN_RECORD` : aucune `001` n'a été trouvée dans la notice d'autorité
   * `NO_AUTH_WITH_THIS_ID` : une autorité possède un lien vers cet ID d'autorité, mais cette autorité n'a pas été récupérée de Koha
 * `id` : dans le cas d'une erreur `NO_AUTH_WITH_THIS_ID`, l'ID de l'autorité qui n'a pas été trouvée
+  * _Note : `-1` signifie que soit le champ ne possédé pas d'ID d'autorité, soit l'ID n'était pas un nombre entier_
 * `index` : sauf pour `NO_AUTH_WITH_THIS_ID`, le numéro de page avec l'index de la notice qui a déclenché l'erreur (si pertinent)
 * `message` : détails de l'erreur (en anglais)
 

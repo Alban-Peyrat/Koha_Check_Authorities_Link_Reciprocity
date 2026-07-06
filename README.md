@@ -18,6 +18,7 @@ _Designed for ArchiRès thesaurus, designed for Koha 23.11_
 * `AUTH_NB_RES_PER_PAGE` : number of authorities returned per page
 * `AUTH_TYPE` : authority type code
 * `AUTH_NAME_FIELD_TAG` : name field tag for this authority type (for datafield, will retrieve the first subfield with code `a`)
+* `AUTH_RELATION_FIELD_TAG` : relation field tag for this authority type (for datafield, will retrieve the first subfield with code `5`)
 * `ERRORS_FILE` : full path to the error output file
 * `MISSING_LINKS_FILE` : full path to the missing link output file
 
@@ -36,6 +37,7 @@ This file contains all the errors other than missing links.
   * `NO_AUTH_ID_IN_RECORD` : no `001` was found in the authority record
   * `NO_AUTH_WITH_THIS_ID` : an authority links to this authority ID, yet this authority was not retrieved from Koha
 * `id` : in the case of a `NO_AUTH_WITH_THIS_ID` error, the authority ID that was not found
+  * _Note : `-1` means either the field had no auhtority ID or that the authority ID was not an integer_
 * `index` : except for `NO_AUTH_WITH_THIS_ID`, the page number with the index of the record that triggered the error (if relevant)
 * `message` : details of the error
 
