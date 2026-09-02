@@ -149,7 +149,7 @@ def get_auth_by_id(id:int) -> Authority|None:
     return None
 
 # ----------------- Preparing Main -----------------
-KOHA = KohaRESTAPIClient(os.getenv("KOHA_URL"), os.getenv("KOHA_CLIENT_ID"), os.getenv("KOHA_CLIENT_SECRET"))
+KOHA = KohaRESTAPIClient(os.getenv("KOHA_URL"), os.getenv("KOHA_CLIENT_ID"), os.getenv("KOHA_CLIENT_SECRET"), user_agent=os.getenv("KOHA_USER_AGENT"))
 if KOHA.status != Koha_Api_Status.SUCCESS:
     print(r"/!\ Failed to connect to Koha /!\ ")
     exit()
